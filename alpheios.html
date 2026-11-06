@@ -252,14 +252,24 @@
 
   <script>
     (function () {
+      var REPO = 'RobMentingEidola/lysias';
       var list = document.getElementById('text-list');
       var empty = document.getElementById('empty');
 
+      function prettify(bestand) {
+        return bestand
+          .replace(/\.html?$/i, '')
+          .replace(/[-_]+/g, ' ')
+          .replace(/\b\w/g, function (c) { return c.toUpperCase(); });
+      }
+
       function render(items) {
-        if (!items || !items.length) {
+        list.innerHTML = '';
+        if (!items.length) {
           empty.hidden = false;
           return;
         }
+        empty.hidden = true;
         items.forEach(function (item) {
           var li = document.createElement('li');
           var a = document.createElement('a');
@@ -269,11 +279,11 @@
 
           var title = document.createElement('span');
           title.className = 'text-title';
-          title.textContent = item.titel || item.bestand;
+          title.textContent = item.titel || prettify(item.bestand);
 
           var meta = document.createElement('span');
           meta.className = 'text-meta';
-          meta.textContent = [item.ondertitel, item.regels].filter(Boolean).join(' · ');
+          meta.textContent = [item.ondertitel, item.regels].filter(Boolean).join(' \u00b7 ');
 
           a.appendChild(title);
           a.appendChild(meta);
@@ -282,10 +292,51 @@
         });
       }
 
-      fetch('teksten/manifest.json', { cache: 'no-cache' })
-        .then(function (r) { return r.ok ? r.json() : { teksten: [] }; })
-        .then(function (data) { render(data.teksten); })
-        .catch(function () { empty.hidden = false; });
+      function labels() {
+        return fetch('teksten/manifest.json', { cache: 'no-cache' })
+          .then(function (r) { return r.ok ? r.json() : { teksten: [] }; })
+          .then(function (d) { return d.teksten || []; })
+          .catch(function () { return []; });
+      }
+
+      function files() {
+        var url = 'https://api.github.com/repos/' + REPO + '/contents/teksten?ref=main';
+        return fetch(url, { cache: 'no-cache' })
+          .then(function (r) { return r.ok ? r.json() : []; })
+          .then(function (d) { return Array.isArray(d) ? d : []; })
+          .catch(function () { return []; });
+      }
+
+      Promise.all([labels(), files()]).then(function (res) {
+        var meta = {};
+        res[0].forEach(function (m) { if (m && m.bestand) meta[m.bestand] = m; });
+
+        var items = res[1]
+          .filter(function (f) { return f.type === 'file' && /\.html?$/i.test(f.name); })
+          .filter(function (f) { return f.name.toLowerCase() !== 'index.html'; })
+          .map(function (f) {
+            var m = meta[f.name] || {};
+            return {
+              bestand: f.name,
+              titel: m.titel || '',
+              ondertitel: m.ondertitel || '',
+              regels: m.regels || ''
+            };
+          })
+          .sort(function (a, b) {
+            return (a.titel || a.bestand).localeCompare(b.titel || b.bestand, 'nl');
+          });
+
+        var known = {};
+        items.forEach(function (i) { known[i.bestand] = true; });
+        res[0].forEach(function (m) {
+          if (m && m.bestand && !known[m.bestand]) {
+            items.push({ bestand: m.bestand, titel: m.titel || '', ondertitel: m.ondertitel || '', regels: m.regels || '' });
+          }
+        });
+
+        render(items);
+      });
     })();
   </script>
 </body>

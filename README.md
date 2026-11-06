@@ -5,36 +5,38 @@ Website met Griekse teksten van Lysias en Alpheios-hulp, in dezelfde opzet als
 [Livius](https://robmentingeidola.github.io/livius/).
 
 - **index.html** — voorpagina
-- **alpheios.html** — lijst met beschikbare teksten
-- **teksten/** — de Alpheios-bestanden (HTML) plus `manifest.json`
+- **alpheios.html** — lijst met beschikbare teksten (wordt automatisch gevuld)
+- **teksten/** — hier komen de Alpheios-bestanden
 - **assets/** — afbeeldingen
 
 ## Een tekst posten
 
 1. Open de tekst in de **Alpheios Alignment Editor**.
 2. Kies **Export → HTML** (het volledige, zelfstandige bestand van ±3 MB).
-3. Bewaar het als `teksten/<korte-naam>.html`, bijvoorbeeld `teksten/eratosthenes-1-2.html`.
-4. Zet het bestand in de map `teksten/` van deze repository (via de website van GitHub
-   kan dat met *Add file → Upload files*).
-5. Voeg een regel toe aan `teksten/manifest.json`:
+3. Noem het bestand kort en zonder spaties, bijvoorbeeld `eratosthenes-1-2.html`.
+4. Ga in deze repository naar de map `teksten/` en kies **Add file → Upload files**.
+   Sleep het bestand erin en klik op **Commit changes**.
 
-   ```json
-   {
-     "teksten": [
-       {
-         "bestand": "eratosthenes-1-2.html",
-         "titel": "Tegen Eratosthenes 1.2",
-         "ondertitel": "Lysias 1",
-         "regels": "§ 2"
-       }
-     ]
-   }
-   ```
+Klaar. De pagina zet het bestand er binnen ongeveer een minuut automatisch bij,
+met de bestandsnaam als titel. Wil je een nette titel, ondertitel of regelnummer
+in plaats van de bestandsnaam, voeg dan een regel toe aan `teksten/manifest.json`:
 
-   `bestand` is verplicht; `titel`, `ondertitel` en `regels` zijn optioneel.
+```json
+{
+  "teksten": [
+    {
+      "bestand": "eratosthenes-1-2.html",
+      "titel": "Tegen Eratosthenes 1.2",
+      "ondertitel": "Lysias 1",
+      "regels": "§ 2"
+    }
+  ]
+}
+```
 
-De pagina werkt de lijst bij zodra de wijziging is gepubliceerd (meestal binnen
-een minuut).
+Alleen `bestand` is verplicht; de rest is optioneel. Bestanden zonder
+manifest-regel verschijnen gewoon met een titel die van de bestandsnaam is
+gemaakt.
 
 ## Publiceren
 
