@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Alpheios — Griekse teksten van Lysias met woordverklaring en morphologie.">
+  <meta name="theme-color" content="#1b1b1f">
+  <title>Alpheios | Lysias</title>
+  <style>
+    :root {
+      --ink: #f2ece0;
+      --muted: #c3b7a3;
+      --paper: #1b1b1f;
+      --paper-light: #fffaf0;
+      --gold: #c8a04a;
+      --accent: #7b3f2e;
+      --line: rgba(242, 236, 224, .2);
+      --serif: Georgia, 'Times New Roman', serif;
+      --sans: 'Trebuchet MS', 'Segoe UI', sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--sans);
+    }
+
+    a { color: inherit; }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav, main, footer {
+      width: min(1180px, calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      padding: 28px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      color: var(--paper-light);
+      background: var(--accent);
+      border-radius: 50%;
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      padding-bottom: 2px;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      font-size: .82rem;
+      letter-spacing: .05em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .nav-link:hover, .nav-link:focus-visible { color: var(--gold); }
+
+    main {
+      flex: 1;
+      display: grid;
+      align-content: center;
+      min-height: 560px;
+      padding: 80px 0;
+    }
+
+    .content { max-width: 760px; }
+
+    .eyebrow {
+      margin: 0 0 25px;
+      color: var(--gold);
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(3.6rem, 9vw, 7rem);
+      font-weight: 400;
+      letter-spacing: -.055em;
+      line-height: .9;
+    }
+
+    .lead {
+      max-width: 560px;
+      margin: 34px 0 42px;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 1.5vw, 1.26rem);
+      line-height: 1.65;
+    }
+
+    .text-menu {
+      max-width: 620px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+
+    .menu-label {
+      margin: 0 0 14px;
+      color: var(--gold);
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .text-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 2px;
+    }
+
+    .text-list a {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 15px 16px;
+      margin: 0 -16px;
+      border-radius: 3px;
+      text-decoration: none;
+      transition: background .2s ease, color .2s ease;
+    }
+
+    .text-list a:hover, .text-list a:focus-visible {
+      background: rgba(200, 160, 74, .1);
+      color: var(--gold);
+    }
+
+    .text-title {
+      font-family: var(--serif);
+      font-size: 1.28rem;
+    }
+
+    .text-meta {
+      color: var(--muted);
+      font-size: .78rem;
+      letter-spacing: .04em;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .empty {
+      margin: 0;
+      padding: 18px 0 6px;
+      color: var(--muted);
+      font-size: .95rem;
+      line-height: 1.6;
+    }
+
+    .hint {
+      margin: 34px 0 0;
+      max-width: 560px;
+      color: var(--muted);
+      font-size: .82rem;
+      line-height: 1.7;
+      opacity: .8;
+    }
+
+    footer {
+      padding: 26px 0 34px;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .78rem;
+      letter-spacing: .04em;
+    }
+
+    footer a { text-decoration: none; }
+    footer a:hover { color: var(--gold); }
+
+    @media (max-width: 640px) {
+      .text-list a { flex-direction: column; gap: 4px; }
+      .text-meta { text-align: left; }
+      footer { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">Λ</span>
+        Lysias
+      </a>
+      <a class="nav-link" href="index.html">Terug</a>
+    </nav>
+
+    <main>
+      <div class="content">
+        <p class="eyebrow">Teksten met Alpheios</p>
+        <h1>Alpheios</h1>
+        <p class="lead">
+          Kies een tekst. Klik op een woord voor betekenis, vorm en grammaticale
+          informatie. De teksten openen in een eigen venster.
+        </p>
+
+        <section class="text-menu" aria-labelledby="teksten-label">
+          <p class="menu-label" id="teksten-label">Beschikbare teksten</p>
+          <ul class="text-list" id="text-list"></ul>
+          <p class="empty" id="empty" hidden>Er zijn nog geen teksten geplaatst.</p>
+        </section>
+
+        <p class="hint">
+          Deze pagina gebruikt de Alpheios-extensie of de ingebouwde Alpheios-lezer.
+          Werkt het klikken op woorden niet? Installeer dan de Alpheios Reading Tools
+          in je browser.
+        </p>
+      </div>
+    </main>
+
+    <footer>
+      <span>Lysias · Griekse teksten met Alpheios</span>
+      <span>Vragen? <a href="mailto:info@robmenting.com">info@robmenting.com</a></span>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      var list = document.getElementById('text-list');
+      var empty = document.getElementById('empty');
+
+      function render(items) {
+        if (!items || !items.length) {
+          empty.hidden = false;
+          return;
+        }
+        items.forEach(function (item) {
+          var li = document.createElement('li');
+          var a = document.createElement('a');
+          a.href = 'teksten/' + item.bestand;
+          a.target = '_blank';
+          a.rel = 'noopener';
+
+          var title = document.createElement('span');
+          title.className = 'text-title';
+          title.textContent = item.titel || item.bestand;
+
+          var meta = document.createElement('span');
+          meta.className = 'text-meta';
+          meta.textContent = [item.ondertitel, item.regels].filter(Boolean).join(' · ');
+
+          a.appendChild(title);
+          a.appendChild(meta);
+          li.appendChild(a);
+          list.appendChild(li);
+        });
+      }
+
+      fetch('teksten/manifest.json', { cache: 'no-cache' })
+        .then(function (r) { return r.ok ? r.json() : { teksten: [] }; })
+        .then(function (data) { render(data.teksten); })
+        .catch(function () { empty.hidden = false; });
+    })();
+  </script>
+</body>
+</html>
