@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Inleiding retorica — ontstaan en ontwikkeling van de welsprekendheid, met een audiofragment van Ineke Sluiter.">
+  <meta name="theme-color" content="#1b1b1f">
+  <title>Inleiding retorica | Lysias</title>
+  <style>
+    :root {
+      --ink: #f2ece0;
+      --muted: #c3b7a3;
+      --paper: #1b1b1f;
+      --paper-light: #fffaf0;
+      --gold: #c8a04a;
+      --accent: #7b3f2e;
+      --line: rgba(242, 236, 224, .2);
+      --serif: Georgia, 'Times New Roman', serif;
+      --sans: 'Trebuchet MS', 'Segoe UI', sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--sans);
+      line-height: 1.7;
+    }
+
+    a { color: inherit; }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav, main, footer {
+      width: min(1180px, calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      padding: 28px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      color: var(--paper-light);
+      background: var(--accent);
+      border-radius: 50%;
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      padding-bottom: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      align-items: center;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      font-size: .82rem;
+      letter-spacing: .05em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .nav-link:hover, .nav-link:focus-visible { color: var(--gold); }
+    .nav-link[aria-current="page"] { color: var(--gold); }
+
+    main {
+      flex: 1;
+      padding: 80px 0 96px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 260px;
+      gap: clamp(40px, 6vw, 90px);
+      align-items: start;
+    }
+
+    .eyebrow {
+      margin: 0 0 25px;
+      color: var(--gold);
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(3rem, 7vw, 5.6rem);
+      font-weight: 400;
+      letter-spacing: -.05em;
+      line-height: .95;
+    }
+
+    .lead {
+      max-width: 620px;
+      margin: 30px 0 54px;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 1.5vw, 1.22rem);
+    }
+
+    h2 {
+      margin: 56px 0 14px;
+      font-family: var(--serif);
+      font-size: clamp(1.5rem, 2.6vw, 2rem);
+      font-weight: 400;
+      letter-spacing: -.02em;
+      line-height: 1.25;
+    }
+
+    h2:first-of-type { margin-top: 0; }
+
+    p { margin: 0 0 18px; max-width: 680px; }
+
+    .audio-card {
+      display: block;
+      margin: 0 0 56px;
+      padding: 26px 28px;
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--gold);
+      border-radius: 3px;
+      background: rgba(200, 160, 74, .06);
+      text-decoration: none;
+      transition: background .2s ease, border-color .2s ease;
+    }
+
+    .audio-card:hover, .audio-card:focus-visible {
+      background: rgba(200, 160, 74, .12);
+      border-left-color: var(--ink);
+    }
+
+    .audio-label {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--gold);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .audio-title {
+      display: block;
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      line-height: 1.3;
+      max-width: 620px;
+    }
+
+    .audio-meta {
+      display: block;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: .8rem;
+      letter-spacing: .04em;
+    }
+
+    .audio-hint {
+      display: block;
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: .9rem;
+      max-width: 620px;
+    }
+
+    aside {
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .86rem;
+      line-height: 1.65;
+    }
+
+    aside p { margin: 0 0 22px; }
+
+    aside strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--ink);
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 46px;
+      padding: 14px 0;
+      color: var(--gold);
+      font-size: .84rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .back::after { content: "→"; font-size: 1.1rem; transition: transform .25s ease; }
+    .back:hover::after { transform: translateX(6px); }
+
+    footer {
+      padding: 26px 0 34px;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .78rem;
+      letter-spacing: .04em;
+    }
+
+    footer a { text-decoration: none; }
+    footer a:hover { color: var(--gold); }
+
+    @media (max-width: 860px) {
+      main { grid-template-columns: 1fr; padding: 48px 0 72px; }
+      aside { margin-top: 44px; }
+      footer { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">Λ</span>
+        Lysias
+      </a>
+      <span class="nav-links">
+        <a class="nav-link" href="alpheios.html">Alpheios</a>
+        <a class="nav-link" href="inleiding-retorica.html" aria-current="page">Inleiding retorica</a>
+      </span>
+    </nav>
+
+    <main>
+      <article>
+        <p class="eyebrow">Achtergrond · welsprekendheid</p>
+        <h1>Inleiding retorica</h1>
+        <p class="lead">
+          Retorica was in Athene geen sierkunst maar een burgerlijke vaardigheid. Wie
+          zijn zaak wilde winnen, moest zijn publiek kennen, zijn argumenten ordenen
+          en zijn taal beheersen — in de volksvergadering, voor de rechtbank en in
+          het openbare debat.
+        </p>
+
+        <a class="audio-card"
+           href="https://www.nporadio1.nl/fragmenten/spraakmakers/38afd1d4-60aa-413d-87a8-8f8d787acceb/2023-10-24-hoe-zetten-de-oude-grieken-die-retorica-in-om-hun-mening-kracht-bij-te-zetten"
+           target="_blank" rel="noopener">
+          <span class="audio-label">Audio · NPO Radio 1</span>
+          <span class="audio-title">Hoe zetten de oude Grieken die retorica in om hun mening kracht bij te zetten?</span>
+          <span class="audio-meta">Spraakmakers, KRO-NCRV · 24 oktober 2023 · met Ineke Sluiter</span>
+          <span class="audio-hint">
+            Woorden doen er toe, zeker in tijden van oorlog. Sluiter, hoogleraar
+            Griekse taal en literatuur, legt uit hoe de Grieken met taal overtuigden
+            — en of die regels nog gelden.
+          </span>
+        </a>
+
+        <h2>De macht van het woord</h2>
+        <p>
+          Waar Homerus Nestor laat optreden als de man wiens woorden zoeter vloeien
+          dan honing, is welsprekendheid geen luxe: zijn raad houdt het leger bijeen.
+          Omdat weinig mensen konden lezen en schrijven, werd alles mondeling
+          afgehandeld — besluiten na discussie in de volksvergadering, geschillen
+          voor een jury.
+        </p>
+
+        <h2>Ontstaan en theorie</h2>
+        <p>
+          In Syracuse stelden Korax en Tisias als eersten een technè op: hoe maak je
+          van een zwakke zaak een sterke — niet door te liegen, maar door goed te
+          ordenen. De sofisten brachten die vaardigheid als onderwijs naar Athene,
+          met de belofte dat wie haar beheerste ook in de politiek zou slagen.
+        </p>
+
+        <h2>Retorica en filosofie</h2>
+        <p>
+          Plato wantrouwde de retorica als vleierij, een schijnkunst zonder kennis
+          van het ware. Isokrates antwoordde met een bredere paideia: de rede vormt
+          de burger. Aristoteles gaf de rede haar eigen systematiek — overtuigen
+          gebeurt door karakter (èthos), emotie (pathos) en argument (logos).
+        </p>
+
+        <h2>De Top Tien</h2>
+        <p>
+          De Alexandrijnse geleerden kozen tien redenaars die als voorbeeld golden.
+          Lysias staat daarin voor de eenvoud: zuiver Attisch, helder verteld,
+          zonder pronk. Zijn rede <em>Tegen Eratosthenes</em> laat zien hoe dat werkt
+          — een verteller die zijn publiek stap voor stap meeneemt.
+        </p>
+
+        <h2>Hellenisme en Rome</h2>
+        <p>
+          In de hellenistische scholen werd de rede in vaste onderdelen geoefend.
+          Rome nam haar over, maar benadrukte de praktijk meer dan de theorie: de
+          redenaar verwierf zijn gezag in politiek en rechtspraak, en de waardige
+          toepassing daarvan gold als typisch Romeins.
+        </p>
+
+        <a class="back" href="alpheios.html">Naar de teksten</a>
+      </article>
+
+      <aside>
+        <p>
+          <strong>Waarom dit hier staat</strong>
+          De rede <em>Tegen Eratosthenes</em> is een juridische rede: Lysias voert
+          een zaak en wil overtuigen. Deze inleiding geeft de middelen waarmee hij
+          dat doet.
+        </p>
+        <p>
+          <strong>Luistertip</strong>
+          Luister het fragment en wijs daarna in de tekst één passage aan waar
+          Lysias een besproken middel toepast.
+        </p>
+        <p>
+          <strong>Verwant</strong>
+          <a href="alpheios.html">Lysias 12, § 1–2</a> — de Griekse tekst met
+          Alpheios-hulp.
+        </p>
+      </aside>
+    </main>
+
+    <footer>
+      <span>Lysias · achtergrond bij de redevoeringen</span>
+      <span>Vragen? <a href="mailto:info@robmenting.com">info@robmenting.com</a></span>
+    </footer>
+  </div>
+</body>
+</html>
