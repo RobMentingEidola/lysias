@@ -1,3 +1,10 @@
 {
-  "teksten": []
+  "teksten": [
+    {
+      "bestand": "eratosthenes-01.html",
+      "titel": "Tegen Eratosthenes 1",
+      "ondertitel": "Lysias 12",
+      "regels": "§ 1"
+    }
+  ]
 }
