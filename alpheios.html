@@ -334,6 +334,14 @@
             };
           })
           .sort(function (a, b) {
+            // Sorteer op paragraafnummer (1, 2, ... 7, 14, ... 19), niet alfabetisch.
+            function nummer(item) {
+              var bron = item.bestand || item.titel || '';
+              var m = bron.match(/(\d+)(?=\.html?$)/i) || bron.match(/(\d+)/);
+              return m ? parseInt(m[1], 10) : Number.MAX_SAFE_INTEGER;
+            }
+            var na = nummer(a), nb = nummer(b);
+            if (na !== nb) { return na - nb; }
             return (a.titel || a.bestand).localeCompare(b.titel || b.bestand, 'nl');
           });
 
