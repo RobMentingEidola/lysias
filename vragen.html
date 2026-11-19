@@ -249,6 +249,72 @@
     footer a { text-decoration: none; }
     footer a:hover { color: var(--gold); }
 
+
+    .werkbalk {
+      width: min(1080px, calc(100% - 48px));
+      margin: 26px auto 0;
+      padding: 16px 18px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px 18px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: rgba(255,250,240,.04);
+    }
+    .werkbalk label { font-size: .82rem; letter-spacing: .04em; color: var(--muted); }
+    .werkbalk input[type="text"] {
+      flex: 1 1 180px;
+      min-width: 140px;
+      padding: 8px 11px;
+      color: var(--ink);
+      background: rgba(0,0,0,.25);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      font-family: var(--sans);
+      font-size: .9rem;
+    }
+    .werkbalk input[type="text"]:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+    .knop {
+      padding: 8px 14px;
+      color: var(--ink);
+      background: transparent;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      font-family: var(--sans);
+      font-size: .82rem;
+      letter-spacing: .04em;
+      cursor: pointer;
+    }
+    .knop:hover, .knop:focus-visible { color: var(--gold); border-color: var(--gold); }
+    .status { font-size: .78rem; color: var(--muted); opacity: .8; }
+
+    .antwoord { margin: 12px 0 6px; }
+    .antwoord textarea {
+      width: 100%;
+      min-height: 84px;
+      padding: 11px 13px;
+      color: var(--ink);
+      background: rgba(255,250,240,.05);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      font-family: var(--sans);
+      font-size: .93rem;
+      line-height: 1.6;
+      resize: vertical;
+    }
+    .antwoord textarea:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+    .antwoord textarea::placeholder { color: var(--muted); opacity: .55; }
+
+    @media print {
+      :root { --ink: #111; --muted: #444; --paper: #fff; --line: rgba(0,0,0,.25); --gold: #111; }
+      body { background: #fff; color: #111; }
+      .nav, .werkbalk .knop, .status, .hint, .middelen { display: none !important; }
+      .antwoord textarea { border: 1px solid #bbb; background: #fff; min-height: 60px; }
+      .werkbalk { display: block; border: none; padding: 0; margin: 0 auto 12px; }
+      ol.vragen li { break-inside: avoid; }
+    }
+
     @media (max-width: 640px) {
       ol.vragen li { padding-left: 50px; }
       footer { flex-direction: column; }
@@ -280,6 +346,14 @@
         Griekse tekst.
       </p>
 
+      <div class="werkbalk">
+        <label for="naam">Naam</label>
+        <input type="text" id="naam" placeholder="Vul je naam in" autocomplete="name">
+        <button class="knop" type="button" id="print-knop">Printen of opslaan als pdf</button>
+        <button class="knop" type="button" id="wis-knop">Alles wissen</button>
+        <span class="status" id="status">Je antwoorden worden alleen op dit apparaat bewaard.</span>
+      </div>
+
       <ul class="middelen">
         <li>ἦθος <span>karakter</span></li>
         <li>πάθος <span>emotie</span></li>
@@ -300,12 +374,14 @@
             Waarmee vergelijkt Lysias in §1 zijn eigen positie als spreker?
             Citeer het Griekse woordpaar waarmee hij dit contrast uitdrukt.
             <a class="tekstlink" href="teksten/eratosthenes-01.html">§ 1 →</a>
+            <div class="antwoord"><textarea id="q1" data-vraag="1" rows="4" placeholder="Jouw antwoord bij vraag 1"></textarea></div>
           </li>
           <li>
             In §1 zegt Lysias dat het niet het beginnen is, maar het ophouden met
             spreken dat moeilijk zal zijn. Leg uit waarom dit een paradox is, en
             welk effect deze paradox heeft aan het begin van een rechtbankrede.
             <a class="tekstlink" href="teksten/eratosthenes-01.html">§ 1 →</a>
+            <div class="antwoord"><textarea id="q2" data-vraag="2" rows="4" placeholder="Jouw antwoord bij vraag 2"></textarea></div>
           </li>
           <li>
             In §2 keert Lysias de gebruikelijke bewijslast om: normaal moet de
@@ -314,6 +390,7 @@
             woorden waarin dit contrast tot uitdrukking komt en leg uit welk
             effect deze omkering heeft op de jury.
             <a class="tekstlink" href="teksten/eratosthenes-02.html">§ 2 →</a>
+            <div class="antwoord"><textarea id="q3" data-vraag="3" rows="4" placeholder="Jouw antwoord bij vraag 3"></textarea></div>
           </li>
           <li>
             Lysias noemt zichzelf in §3 iemand die nooit eigen of andermans zaken
@@ -321,6 +398,7 @@
             πράγματα πράξας</span>). Wat probeert hij met deze zelfpresentatie te
             bereiken bij de jury? Benoem het Griekse begrip voor dit middel.
             <a class="tekstlink" href="teksten/eratosthenes-03.html">§ 3 →</a>
+            <div class="antwoord"><textarea id="q4" data-vraag="4" rows="4" placeholder="Jouw antwoord bij vraag 4"></textarea></div>
           </li>
           <li>
             Vergelijk de zelfpresentatie van Lysias in dit fragment met die van
@@ -329,8 +407,9 @@
             Ajax een retorische strategie? Onderbouw je antwoord met een citaat
             uit de Griekse tekst.
             <a class="tekstlink" href="teksten/eratosthenes-03.html">§ 3 →</a>
+            <div class="antwoord"><textarea id="q5" data-vraag="5" rows="4" placeholder="Jouw antwoord bij vraag 5"></textarea></div>
           </li>
-        </ol>
+          </ol>
       </section>
 
       <section class="blok">
@@ -347,30 +426,37 @@
             Lysias begint zijn verhaal met zijn vader Kephalos. Wie was hij, en
             welke functie heeft deze opening voor de rest van het narratio?
             <a class="tekstlink" href="teksten/eratosthenes-04.html">§ 4 →</a>
+            <div class="antwoord"><textarea id="q6" data-vraag="6" rows="4" placeholder="Jouw antwoord bij vraag 6"></textarea></div>
           </li>
           <li>
             In §5 staat een zin die als een chiasme én als een antithese werkt.
             Citeer die zin, benoem beide stijlfiguren en leg uit welk effect de
             zin heeft.
             <a class="tekstlink" href="teksten/eratosthenes-05.html">§ 5 →</a>
+            <div class="antwoord"><textarea id="q7" data-vraag="7" rows="4" placeholder="Jouw antwoord bij vraag 7"></textarea></div>
           </li>
           <li>
             Welk voorwendsel gebruikten de Dertig volgens §6, en wat was hun
             werkelijke motief? Citeer de Griekse woorden waarin dat motief staat.
             <a class="tekstlink" href="teksten/eratosthenes-06.html">§ 6 →</a>
+            <div class="antwoord"><textarea id="q8" data-vraag="8" rows="4" placeholder="Jouw antwoord bij vraag 8"></textarea></div>
           </li>
           <li>
             Waarom besloten de Dertig ook twee arme metoiken op te pakken, en wat
             onthult dat besluit over hen?
             <a class="tekstlink" href="teksten/eratosthenes-07.html">§ 7 →</a>
+            <div class="antwoord"><textarea id="q9" data-vraag="9" rows="4" placeholder="Jouw antwoord bij vraag 9"></textarea></div>
           </li>
           <li>
             Lysias neemt in §5 de woorden van de Dertig letterlijk over. Waarom is
             dat hier effectiever dan een directe beschuldiging?
             <a class="tekstlink" href="teksten/eratosthenes-05.html">§ 5 →</a>
+            <div class="antwoord"><textarea id="q10" data-vraag="10" rows="4" placeholder="Jouw antwoord bij vraag 10"></textarea></div>
           </li>
-        </ol>
+          </ol>
       </section>
+
+
 
       <p class="hint">
         De links openen de Griekse tekst in een nieuw venster, met Alpheios-hulp:
@@ -385,5 +471,59 @@
       <span>Vragen? <a href="mailto:info@robmenting.com">info@robmenting.com</a></span>
     </footer>
   </div>
+
+  <script>
+    (function () {
+      var PREFIX = 'lysias12-';
+      var velden = Array.prototype.slice.call(document.querySelectorAll('.antwoord textarea'));
+      var naam = document.getElementById('naam');
+      var status = document.getElementById('status');
+
+      function bewaard() {
+        try { return JSON.parse(localStorage.getItem(PREFIX + 'state') || '{}'); }
+        catch (e) { return {}; }
+      }
+
+      function bewaar() {
+        var state = { naam: naam.value, antwoorden: {} };
+        velden.forEach(function (v) { state.antwoorden[v.id] = v.value; });
+        try {
+          localStorage.setItem(PREFIX + 'state', JSON.stringify(state));
+          status.textContent = 'Bewaard op dit apparaat · ' + new Date().toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' });
+        } catch (e) {
+          status.textContent = 'Bewaren lukt niet in deze browser (privémodus?).';
+        }
+      }
+
+      var state = bewaard();
+      if (state.naam) naam.value = state.naam;
+      velden.forEach(function (v) {
+        if (state.antwoorden && typeof state.antwoorden[v.id] === 'string') v.value = state.antwoorden[v.id];
+        v.addEventListener('input', function () {
+          clearTimeout(v._t);
+          v._t = setTimeout(bewaar, 400);
+        });
+      });
+      naam.addEventListener('input', function () {
+        clearTimeout(naam._t);
+        naam._t = setTimeout(bewaar, 400);
+      });
+
+      document.getElementById('print-knop').addEventListener('click', function () {
+        bewaar();
+        window.print();
+      });
+
+      document.getElementById('wis-knop').addEventListener('click', function () {
+        if (!confirm('Alle antwoorden op dit apparaat wissen?')) return;
+        velden.forEach(function (v) { v.value = ''; });
+        naam.value = '';
+        try { localStorage.removeItem(PREFIX + 'state'); } catch (e) {}
+        status.textContent = 'Alle antwoorden gewist.';
+      });
+
+      window.addEventListener('beforeunload', bewaar);
+    })();
+  </script>
 </body>
 </html>
