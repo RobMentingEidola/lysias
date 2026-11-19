@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Werkvragen bij Lysias 12, Tegen Eratosthenes — fragment 1 en 2.">
+  <meta name="theme-color" content="#1b1b1f">
+  <title>Vragen — Lysias 12</title>
+  <style>
+    :root {
+      --ink: #f2ece0;
+      --muted: #c3b7a3;
+      --paper: #1b1b1f;
+      --paper-light: #fffaf0;
+      --gold: #c8a04a;
+      --accent: #7b3f2e;
+      --line: rgba(242, 236, 224, .2);
+      --serif: Georgia, 'Times New Roman', serif;
+      --sans: 'Trebuchet MS', 'Segoe UI', sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--sans);
+    }
+
+    a { color: inherit; }
+
+    .page { min-height: 100vh; display: flex; flex-direction: column; }
+
+    .nav {
+      width: min(1080px, calc(100% - 48px));
+      margin: 0 auto;
+      padding: 28px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      color: var(--paper-light);
+      background: var(--accent);
+      border-radius: 50%;
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 400;
+      letter-spacing: 0;
+      padding-bottom: 2px;
+    }
+
+    .nav-links { display: flex; gap: 26px; align-items: center; }
+
+    .nav-link {
+      color: var(--muted);
+      font-size: .82rem;
+      letter-spacing: .05em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .nav-link:hover, .nav-link:focus-visible { color: var(--gold); }
+    .nav-link[aria-current="page"] { color: var(--gold); }
+
+    main {
+      width: min(1080px, calc(100% - 48px));
+      margin: 0 auto;
+      flex: 1;
+      padding: clamp(44px, 7vh, 76px) 0 90px;
+    }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      color: var(--gold);
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 400;
+      letter-spacing: -.03em;
+      line-height: 1.05;
+    }
+
+    .greek-title {
+      display: block;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: .38em;
+      letter-spacing: .04em;
+    }
+
+    .lead {
+      max-width: 620px;
+      margin: 26px 0 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .middelen {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 34px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .middelen li {
+      padding: 9px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: var(--ink);
+    }
+
+    .middelen span { color: var(--muted); font-family: var(--sans); font-size: .8rem; letter-spacing: .05em; text-transform: uppercase; }
+
+    .blok {
+      margin-top: clamp(46px, 7vh, 74px);
+      border-top: 1px solid var(--line);
+      padding-top: 34px;
+    }
+
+    .blok h2 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+      font-weight: 400;
+      letter-spacing: -.01em;
+    }
+
+    .blok .bron {
+      margin: 8px 0 0;
+      color: var(--gold);
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .blok > p.intro {
+      max-width: 640px;
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: .96rem;
+      line-height: 1.7;
+    }
+
+    ol.vragen { margin: 30px 0 0; padding: 0; list-style: none; counter-reset: v; }
+
+    ol.vragen li {
+      counter-increment: v;
+      position: relative;
+      padding: 22px 0 22px 62px;
+      border-bottom: 1px solid rgba(242, 236, 224, .09);
+      font-size: 1rem;
+      line-height: 1.72;
+    }
+
+    ol.vragen li::before {
+      content: counter(v);
+      position: absolute;
+      left: 0;
+      top: 20px;
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--gold);
+      font-size: .82rem;
+      font-weight: 700;
+    }
+
+    ol.vragen li:last-child { border-bottom: 0; }
+
+    .gr { font-family: var(--serif); color: var(--paper-light); }
+
+    .tekstlink {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-left: 6px;
+      color: var(--gold);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-decoration: none;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .tekstlink:hover { text-decoration: underline; }
+
+    .hint {
+      max-width: 640px;
+      margin: 40px 0 0;
+      color: var(--muted);
+      font-size: .84rem;
+      line-height: 1.75;
+      opacity: .85;
+    }
+
+    footer {
+      width: min(1080px, calc(100% - 48px));
+      margin: 0 auto;
+      padding: 26px 0 34px;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .78rem;
+      letter-spacing: .04em;
+    }
+
+    footer a { text-decoration: none; }
+    footer a:hover { color: var(--gold); }
+
+    @media (max-width: 640px) {
+      ol.vragen li { padding-left: 50px; }
+      footer { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">Λ</span>
+        Lysias
+      </a>
+      <span class="nav-links">
+        <a class="nav-link" href="index.html">Terug</a>
+        <a class="nav-link" href="inleiding-retorica.html">Inleiding retorica</a>
+        <a class="nav-link" href="alpheios.html">Alpheios</a>
+        <a class="nav-link" href="vragen.html" aria-current="page">Vragen</a>
+      </span>
+    </nav>
+
+    <main>
+      <p class="eyebrow">Werkvragen · Lysias 12</p>
+      <h1>Tegen Eratosthenes<span class="greek-title">Κατὰ Ἐρατοσθένους</span></h1>
+      <p class="lead">
+        Tien vragen bij fragment 1 (§§ 1–3, het prooemium) en fragment 2
+        (§§ 4–7, het begin van het narratio). Lees eerst de paragraaf, beantwoord
+        de vraag in eigen woorden en onderbouw je antwoord met een citaat uit de
+        Griekse tekst.
+      </p>
+
+      <ul class="middelen">
+        <li>ἦθος <span>karakter</span></li>
+        <li>πάθος <span>emotie</span></li>
+        <li>λόγος <span>argument</span></li>
+      </ul>
+
+      <section class="blok">
+        <p class="bron">Fragment 1 · §§ 1–3 · prooemium</p>
+        <h2>Het begin van de rede</h2>
+        <p class="intro">
+          Lysias begint niet met het misdrijf maar met zichzelf: met zijn positie,
+          zijn ervaring en zijn familie. Let bij elke vraag op welk middel van
+          overtuiging hij hier inzet.
+        </p>
+
+        <ol class="vragen">
+          <li>
+            Waarmee vergelijkt Lysias in §1 zijn eigen positie als spreker?
+            Citeer het Griekse woordpaar waarmee hij dit contrast uitdrukt.
+            <a class="tekstlink" href="teksten/eratosthenes-01.html">§ 1 →</a>
+          </li>
+          <li>
+            In §1 zegt Lysias dat het niet het beginnen is, maar het ophouden met
+            spreken dat moeilijk zal zijn. Leg uit waarom dit een paradox is, en
+            welk effect deze paradox heeft aan het begin van een rechtbankrede.
+            <a class="tekstlink" href="teksten/eratosthenes-01.html">§ 1 →</a>
+          </li>
+          <li>
+            In §2 keert Lysias de gebruikelijke bewijslast om: normaal moet de
+            aanklager zijn persoonlijke vijandschap tonen, maar hier moeten de
+            beklaagden hun vijandschap tegen de stad verklaren. Citeer de Griekse
+            woorden waarin dit contrast tot uitdrukking komt en leg uit welk
+            effect deze omkering heeft op de jury.
+            <a class="tekstlink" href="teksten/eratosthenes-02.html">§ 2 →</a>
+          </li>
+          <li>
+            Lysias noemt zichzelf in §3 iemand die nooit eigen of andermans zaken
+            heeft behartigd (<span class="gr">οὔτ' ἐμαυτοῦ πώποτε οὔτε ἀλλότρια
+            πράγματα πράξας</span>). Wat probeert hij met deze zelfpresentatie te
+            bereiken bij de jury? Benoem het Griekse begrip voor dit middel.
+            <a class="tekstlink" href="teksten/eratosthenes-03.html">§ 3 →</a>
+          </li>
+          <li>
+            Vergelijk de zelfpresentatie van Lysias in dit fragment met die van
+            Ajax in Ovidius' <em>Metamorfosen</em>: beide sprekers presenteren
+            zichzelf als onervaren in het spreken. Is dit bij Lysias net als bij
+            Ajax een retorische strategie? Onderbouw je antwoord met een citaat
+            uit de Griekse tekst.
+            <a class="tekstlink" href="teksten/eratosthenes-03.html">§ 3 →</a>
+          </li>
+        </ol>
+      </section>
+
+      <section class="blok">
+        <p class="bron">Fragment 2 · §§ 4–7 · begin van het narratio</p>
+        <h2>De vader, de Dertig en het geld</h2>
+        <p class="intro">
+          Van zijn eigen positie stapt Lysias over op het verhaal: eerst zijn
+          familie, dan de Dertig. Let op het verschil tussen wat de Dertig zeggen
+          en wat zij doen.
+        </p>
+
+        <ol class="vragen" start="6" style="counter-reset: v 5;">
+          <li>
+            Lysias begint zijn verhaal met zijn vader Kephalos. Wie was hij, en
+            welke functie heeft deze opening voor de rest van het narratio?
+            <a class="tekstlink" href="teksten/eratosthenes-04.html">§ 4 →</a>
+          </li>
+          <li>
+            In §5 staat een zin die als een chiasme én als een antithese werkt.
+            Citeer die zin, benoem beide stijlfiguren en leg uit welk effect de
+            zin heeft.
+            <a class="tekstlink" href="teksten/eratosthenes-05.html">§ 5 →</a>
+          </li>
+          <li>
+            Welk voorwendsel gebruikten de Dertig volgens §6, en wat was hun
+            werkelijke motief? Citeer de Griekse woorden waarin dat motief staat.
+            <a class="tekstlink" href="teksten/eratosthenes-06.html">§ 6 →</a>
+          </li>
+          <li>
+            Waarom besloten de Dertig ook twee arme metoiken op te pakken, en wat
+            onthult dat besluit over hen?
+            <a class="tekstlink" href="teksten/eratosthenes-07.html">§ 7 →</a>
+          </li>
+          <li>
+            Lysias neemt in §5 de woorden van de Dertig letterlijk over. Waarom is
+            dat hier effectiever dan een directe beschuldiging?
+            <a class="tekstlink" href="teksten/eratosthenes-05.html">§ 5 →</a>
+          </li>
+        </ol>
+      </section>
+
+      <p class="hint">
+        De links openen de Griekse tekst in een nieuw venster, met Alpheios-hulp:
+        klik op een woord voor betekenis, vorm en grammaticale informatie. Werkt
+        dat niet, installeer dan de Alpheios Reading Tools in je browser, of
+        gebruik de vertaling in je bundel.
+      </p>
+    </main>
+
+    <footer>
+      <span>Lysias 12 · Tegen Eratosthenes · werkvragen</span>
+      <span>Vragen? <a href="mailto:info@robmenting.com">info@robmenting.com</a></span>
+    </footer>
+  </div>
+</body>
+</html>
