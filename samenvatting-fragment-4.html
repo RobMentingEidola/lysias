@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Samenvatting van Lysias 12, Tegen Eratosthenes — fragment 4, paragrafen 83-87.">
+  <meta name="theme-color" content="#1b1b1f">
+  <title>Samenvatting fragment 4 — Lysias 12</title>
+  <style>
+    :root {
+      --ink: #f2ece0;
+      --muted: #c3b7a3;
+      --paper: #1b1b1f;
+      --paper-light: #fffaf0;
+      --gold: #c8a04a;
+      --accent: #7b3f2e;
+      --line: rgba(242, 236, 224, .2);
+      --serif: Georgia, 'Times New Roman', serif;
+      --sans: 'Trebuchet MS', 'Segoe UI', sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--sans);
+    }
+
+    a { color: inherit; }
+
+    .page { min-height: 100vh; display: flex; flex-direction: column; }
+
+    .nav {
+      width: min(1080px, calc(100% - 48px));
+      margin: 0 auto;
+      padding: 28px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      color: var(--paper-light);
+      background: var(--accent);
+      border-radius: 50%;
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 400;
+      letter-spacing: 0;
+      padding-bottom: 2px;
+    }
+
+    .nav-links { display: flex; gap: 26px; align-items: center; }
+
+    .nav-link {
+      color: var(--muted);
+      font-size: .82rem;
+      letter-spacing: .05em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .nav-link:hover, .nav-link:focus-visible { color: var(--gold); }
+    .nav-link[aria-current="page"] { color: var(--gold); }
+
+    main {
+      width: min(1080px, calc(100% - 48px));
+      margin: 0 auto;
+      flex: 1;
+      padding: clamp(44px, 7vh, 76px) 0 90px;
+    }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      color: var(--gold);
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 400;
+      letter-spacing: -.03em;
+      line-height: 1.05;
+    }
+
+    .greek-title {
+      display: block;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: .38em;
+      letter-spacing: .04em;
+    }
+
+    .lead {
+      max-width: 620px;
+      margin: 26px 0 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .middelen {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 34px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .middelen li {
+      padding: 9px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: var(--ink);
+    }
+
+    .middelen span { color: var(--muted); font-family: var(--sans); font-size: .8rem; letter-spacing: .05em; text-transform: uppercase; }
+
+    .blok {
+      margin-top: clamp(46px, 7vh, 74px);
+      border-top: 1px solid var(--line);
+      padding-top: 34px;
+    }
+
+    .blok h2 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+      font-weight: 400;
+      letter-spacing: -.01em;
+    }
+
+    .blok .bron {
+      margin: 8px 0 0;
+      color: var(--gold);
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .blok > p.intro {
+      max-width: 640px;
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: .96rem;
+      line-height: 1.7;
+    }
+
+    ol.vragen { margin: 30px 0 0; padding: 0; list-style: none; counter-reset: v; }
+
+    ol.vragen li {
+      counter-increment: v;
+      position: relative;
+      padding: 22px 0 22px 62px;
+      border-bottom: 1px solid rgba(242, 236, 224, .09);
+      font-size: 1rem;
+      line-height: 1.72;
+    }
+
+    ol.vragen li::before {
+      content: counter(v);
+      position: absolute;
+      left: 0;
+      top: 20px;
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--gold);
+      font-size: .82rem;
+      font-weight: 700;
+    }
+
+    ol.vragen li:last-child { border-bottom: 0; }
+
+    .gr { font-family: var(--serif); color: var(--paper-light); }
+
+    .tekstlink {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-left: 6px;
+      color: var(--gold);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-decoration: none;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .tekstlink:hover { text-decoration: underline; }
+
+    .hint {
+      max-width: 640px;
+      margin: 40px 0 0;
+      color: var(--muted);
+      font-size: .84rem;
+      line-height: 1.75;
+      opacity: .85;
+    }
+
+    footer {
+      width: min(1080px, calc(100% - 48px));
+      margin: 0 auto;
+      padding: 26px 0 34px;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .78rem;
+      letter-spacing: .04em;
+    }
+
+    footer a { text-decoration: none; }
+    footer a:hover { color: var(--gold); }
+
+
+    .werkbalk {
+      width: min(1080px, calc(100% - 48px));
+      margin: 26px auto 0;
+      padding: 16px 18px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px 18px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: rgba(255,250,240,.04);
+    }
+    .werkbalk label { font-size: .82rem; letter-spacing: .04em; color: var(--muted); }
+    .werkbalk input[type="text"] {
+      flex: 1 1 180px;
+      min-width: 140px;
+      padding: 8px 11px;
+      color: var(--ink);
+      background: rgba(0,0,0,.25);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      font-family: var(--sans);
+      font-size: .9rem;
+    }
+    .werkbalk input[type="text"]:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+    .knop {
+      padding: 8px 14px;
+      color: var(--ink);
+      background: transparent;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      font-family: var(--sans);
+      font-size: .82rem;
+      letter-spacing: .04em;
+      cursor: pointer;
+    }
+    .knop:hover, .knop:focus-visible { color: var(--gold); border-color: var(--gold); }
+    .status { font-size: .78rem; color: var(--muted); opacity: .8; }
+
+    .antwoord { margin: 12px 0 6px; }
+    .antwoord textarea {
+      width: 100%;
+      min-height: 84px;
+      padding: 11px 13px;
+      color: var(--ink);
+      background: rgba(255,250,240,.05);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      font-family: var(--sans);
+      font-size: .93rem;
+      line-height: 1.6;
+      resize: vertical;
+    }
+    .antwoord textarea:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+    .antwoord textarea::placeholder { color: var(--muted); opacity: .55; }
+
+    @media print {
+      :root { --ink: #111; --muted: #444; --paper: #fff; --line: rgba(0,0,0,.25); --gold: #111; }
+      body { background: #fff; color: #111; }
+      .nav, .werkbalk .knop, .status, .hint, .middelen { display: none !important; }
+      .antwoord textarea { border: 1px solid #bbb; background: #fff; min-height: 60px; }
+      .werkbalk { display: block; border: none; padding: 0; margin: 0 auto 12px; }
+      ol.vragen li { break-inside: avoid; }
+    }
+
+    @media (max-width: 640px) {
+      ol.vragen li { padding-left: 50px; }
+      footer { flex-direction: column; }
+    }
+
+    .samenvatting { max-width: 760px; }
+    .samenvatting p { font-size: 1.05rem; line-height: 1.75; color: var(--ink); margin: 0 0 1.1em; }
+    .samenvatting .par { margin: 0 0 2.1em; }
+    .samenvatting h2 {
+      font-family: var(--serif);
+      font-size: 1.18rem;
+      font-weight: 400;
+      color: var(--gold);
+      margin: 0 0 .5em;
+      letter-spacing: .01em;
+    }
+    .samenvatting h2 .num {
+      color: var(--muted);
+      font-size: .95rem;
+      letter-spacing: .08em;
+      margin-right: .5em;
+      font-family: var(--sans);
+    }
+    .kern {
+      border-left: 3px solid var(--gold);
+      padding: .1em 0 .1em 1.1em;
+      margin: 2.4em 0;
+    }
+    .kern p { font-family: var(--serif); font-size: 1.12rem; line-height: 1.7; color: var(--paper-light); }
+    .kern .label {
+      display: block;
+      font-family: var(--sans);
+      font-size: .72rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: .5em;
+    }
+    .slot { margin-top: 2.4em; }
+    .slot p { color: var(--muted); }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">Λ</span>
+        Lysias
+      </a>
+      <span class="nav-links">
+        <a class="nav-link" href="index.html">Terug</a>
+        <a class="nav-link" href="inleiding-retorica.html">Inleiding retorica</a>
+        <a class="nav-link" href="alpheios.html">Alpheios</a>
+        <a class="nav-link" href="vragen.html">Vragen</a>
+        <a class="nav-link" href="samenvatting-fragment-4.html" aria-current="page">Samenvatting</a>
+      </span>
+    </nav>
+
+    <main>
+      <p class="eyebrow">Samenvatting · Fragment 4 · §§ 83&ndash;87</p>
+      <h1 class="greek-title">De peroratio</h1>
+      <p class="lead">De argumentatie is klaar. Lysias heeft aangetoond dat Eratosthenes schuldig is en dat de amnestie van 403 niet op hem van toepassing is. Wat nu volgt, is het slot van de rede: geen nieuwe feiten, maar een beroep op het gevoel van de jury.</p>
+
+      <div class="samenvatting">
+
+        <div class="par">
+          <h2><span class="num">§ 83</span>De straf kan nooit genoeg zijn</h2>
+          <p>Twee retorische vragen, beide met het antwoord <em>nee</em>. Dood je hen &eacute;n hun kinderen &mdash; is dat dan voldoende voor de vaders, zonen en broers die zij zonder proces hebben gedood? En als je hun bezit verbeurd verklaart &mdash; is dat dan genoeg voor de schade van de stad en voor ieder persoonlijk? Lysias zegt niet w&aacute;t de straf moet zijn. Hij zegt dat elke straf tekortschiet. Daarmee maakt hij een vrijspraak ondenkbaar.</p>
+        </div>
+
+        <div class="par">
+          <h2><span class="num">§ 84</span>Vrijspraak is onmogelijk</h2>
+          <p>Als je in alles tekortschiet, hoe kun je hem dan laten gaan? Er is &eacute;&eacute;n uitzondering: wie het passend vindt dat je de veroordeelden helpt of bevriend bent met degenen die de stad te gronde hebben gericht. Die mogelijkheid zet hij neer als iets absurds. Zijn conclusie: zulke mensen zijn <em>κοινοὶ ἐχθροί</em>, gemeenschappelijke vijanden, en je strijdt niet <em>samen met</em> de slachtoffers tegen hen (<em>συναγωνίζεσθαι</em>) &mdash; je kiest partij tegen hen. Dit is de directe oproep aan de jury.</p>
+        </div>
+
+        <div class="par">
+          <h2><span class="num">§ 85</span>Zijn brutaliteit</h2>
+          <p>Dat hij het gewaagd heeft hier te komen spreken, moet de jury tot nadenken stemmen. Hij komt hier alsof hij &oacute;f gaat bewijzen dat hij niets gedaan heeft, &oacute;f dat de jury hem eerder moet geloven dan de mensen die hij onrecht heeft aangedaan. En dan de zin die de jury zelf in het vizier neemt: dat jullie zo iemand nog nooit hebben meegemaakt, daarvan zijn jullie zelf getuige. Lysias maakt het publiek tot bewijsstuk; sommigen van jullie, zegt hij, staan verbaasd over zijn lef.</p>
+        </div>
+
+        <div class="par">
+          <h2><span class="num">§ 86</span>Ze kunnen noch spreken noch zwijgen</h2>
+          <p>De grootste misdadigers kunnen noch spreken noch zwijgen. Zoals zij, toen zij aan de macht waren, tegen velen zeiden dat zij het beste voor de stad beraamden, zo hopen zij nu, hierheen gekomen, dat jullie door redenaars misleid hun eigen misdaden vergeten. Het woord <em>ῥήτορες</em> staat hier bewust naast <em>ἐξαπατηθέντας</em>: de redevoering van de verdediging is misleiding.</p>
+        </div>
+
+        <div class="par">
+          <h2><span class="num">§ 87</span>Ook de getuigen deugen niet</h2>
+          <p>Lysias keert zich tegen degenen die voor Eratosthenes getuigen. Zij menen dat de jury sterker is dan de waarheid, dat de ene redenaar bekwamer is dan de andere, en dat je een bekwame verdediger eerder ter wille bent dan dat je van hem het recht krijgt. Toch moet je niet boos zijn op de redenaars, besluit hij, maar op degenen die zovelen van jullie hebben gedood.</p>
+        </div>
+
+        <div class="kern">
+          <span class="label">De lijn van het fragment</span>
+          <p>De straf is altijd te klein (§ 83), dus vrijspraak is onmogelijk (§ 84); zijn komst hier is pure brutaliteit (§ 85), zijn verdediging is misleiding door redenaars (§ 86), en zelfs zijn getuigen stellen de waarheid ondergeschikt aan welsprekendheid (§ 87).</p>
+        </div>
+
+        <div class="slot">
+          <h2><span class="num">Retorisch</span>πάθος na λόγος</h2>
+          <p>Het hele fragment is <strong>πάθος</strong> na de <strong>λόγος</strong> van de argumentatie. Geen bewijs meer, maar verontwaardiging &mdash; opgewekt met retorische vragen, een absurde tegenmogelijkheid en het woordveld van de misleiding (<em>ἐξαπατάω</em>, <em>δεινός</em>, <em>χαρίζεσθαι</em>). Voor de klas is § 84 het kernpunt: daar staat de eigenlijke eis, verpakt als vanzelfsprekendheid.</p>
+        </div>
+
+      </div>
+    </main>
+
+    <footer>
+      <span>Lysias 12 · Tegen Eratosthenes · samenvatting fragment 4</span>
+      <span>Vragen? <a href="mailto:info@robmenting.com">info@robmenting.com</a></span>
+    </footer>
+  </div>
+</body>
+</html>
